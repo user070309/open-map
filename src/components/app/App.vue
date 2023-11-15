@@ -11,7 +11,8 @@
                 v-bind:movies="onFilterHandler(onSearchHandler(movies, term), filter)"
                 @onToggle="onToggleHandler"
                 @onRemove='onRemoveHandler'/>
-            <OpenMap/>
+            <OpenMap :movies="movies"/>
+            <Coordinate v-bind:lists="movies"/>
         </div>
     </div>
 </template>
@@ -24,9 +25,11 @@ import ListFilter from "@/components/list-filter/ListFilter.vue";
 import List from "@/components/lists/List.vue";
 import ListAdd from "@/components/list-add/ListAdd.vue";
 import OpenMap from "@/components/map/OpenMap.vue";
+import Coordinate from "@/ui-components/Coordinate.vue";
 
 export default{
     components:{
+        Coordinate,
         OpenMap,
         ListAdd,
         List,
@@ -38,23 +41,23 @@ export default{
         return {
             movies:[
                 {
-                    name:'Mission Impossible',
-                    longitude:800,
-                    latitude:500,
+                    name:'Toshkent',
+                    latitude:69.254631,
+                    longitude:41.316011,
                     type:1,
                     id:1,
                 },
                 {
-                    name:'Game of Thrones',
-                    longitude:800,
-                    latitude:500,
+                    name:'Chirchiq',
+                    latitude:69.591520,
+                    longitude:41.492798,
                     type:1,
                     id:2,
                 },
                 {
-                    name:'James Bond',
-                    longitude:800,
-                    latitude:500,
+                    name:'Samarqand',
+                    latitude:66.947957,
+                    longitude:39.668590,
                     type:2,
                     id:3,
                 },

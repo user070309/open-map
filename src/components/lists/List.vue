@@ -1,11 +1,14 @@
 <template>
     <table class="movie-list list-group">
-        <tr>
-            <th>Place</th>
-            <th>longitude</th>
-            <th>latitude</th>
-            <th>type</th>
-        </tr>
+<!--        <div>-->
+<!--            <tr>-->
+<!--            <th>Place</th>-->
+<!--            <th>latitude</th>-->
+<!--            <th>longitude</th>-->
+<!--            <th>type</th>-->
+<!--          </tr>-->
+<!--        </div>-->
+
         <ListItem v-for="movie in movies"
                        v-bind:movie="movie"
                        :key="movie.id"

@@ -26,20 +26,10 @@
                                     v-on:input="name = $event.target.value"/>
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Longitude:</label>
+                                <label for="recipient-name" class="col-form-label">Latitude:</label>
                                 <Input
                                     class="new-movie-label"
-                                    placeholder="Longitude"
-                                    type="number"
-                                    :value="longitude"
-                                    v-on:input="longitude = $event.target.value"/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Longitude:</label>
-                                <Input
-                                    class="new-movie-label"
-                                    placeholder="Longitude"
+                                    placeholder="Latitude"
                                     type="number"
                                     :value="latitude"
                                     v-on:input="latitude = $event.target.value"/>
@@ -50,6 +40,16 @@
                                 <Input
                                     class="new-movie-label"
                                     placeholder="Longitude"
+                                    type="number"
+                                    :value="longitude"
+                                    v-on:input="longitude = $event.target.value"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">type:</label>
+                                <Input
+                                    class="new-movie-label"
+                                    placeholder="Type"
                                     type="number"
                                     :value="type"
                                     v-on:input="type = $event.target.value"/>
