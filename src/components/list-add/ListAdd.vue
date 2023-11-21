@@ -72,16 +72,18 @@
 
 <script>
 
+import { useMovieStore } from "@/stores/movie";
+
 export default {
     data(){
         return{
+            movieStore: useMovieStore(),
             name: '',
             longitude:'',
             latitude:'',
             type:''
         }
     },
-
     methods: {
         addMovie() {
             if(!this.name || !this.type) return
@@ -92,7 +94,8 @@ export default {
                 type: this.type,
                 id: Date.now(),
             }
-            this.$emit('createMovie', newMovie) //ona divga ma'lumot jo'natish
+            this.movieStore.movies.push(newMovie);
+            //this.$emit('createMovie', newMovie) //ona divga ma'lumot jo'natish
             this.name = ''
             this.longitude = ''
             this.latitude = ''

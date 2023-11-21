@@ -35,14 +35,14 @@ export const useMovieStore = defineStore('counter', {
                     id:1,
                 },
                 {
-                    name:'Chirchiq',
+                    name:'Chirchiq1',
                     latitude:69.591520,
                     longitude:41.492798,
                     type:1,
                     id:2,
                 },
                 {
-                    name:'Samarqand',
+                    name:'Samarqand1',
                     latitude:66.947957,
                     longitude:39.668590,
                     type:2,
@@ -64,5 +64,18 @@ export const useMovieStore = defineStore('counter', {
             this.movies.forEach(movie => coordinates.push([movie.latitude, movie.longitude]));
             return coordinates;
         },
+        getTypes(){
+            const types = [];
+            this.movies.forEach(movie => types.push([movie.type]));
+            return types
+        },
+        getNames(){
+            const names = [];
+            this.movies.forEach(movie => names.push([movie.name]));
+            return names
+        }
     },
+    remove(id) {
+        this.movies = this.movies.filter(c => c.id !== id)
+    }
 })

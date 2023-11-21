@@ -9,7 +9,7 @@
 <!--          </tr>-->
 <!--        </div>-->
 
-        <ListItem v-for="movie in movies"
+        <ListItem v-for="movie in movieStore.movies"
                        v-bind:movie="movie"
                        :key="movie.id"
                        @onToggle="$emit('onToggle', $event)"
@@ -19,7 +19,13 @@
 
 <script>
 import ListItem from "@/components/list-item/ListItem.vue";
+import {useMovieStore} from "@/stores/movie";
 export default {
+    data(){
+        return{
+            movieStore: useMovieStore(),
+        }
+    },
     components: {
         ListItem
     },

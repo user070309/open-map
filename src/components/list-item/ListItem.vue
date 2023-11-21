@@ -7,7 +7,7 @@
         <input type="number" class="list-group-item-input" v-bind:value="movie.type" />
 
         <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn-trash btn-sm" @click="$emit('onRemove', movie.id)">
+            <button type="button" class="btn-trash btn-sm" @click="movieStore.remove(movie.id)">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -15,7 +15,13 @@
 </template>
 
 <script>
+import {useMovieStore} from "@/stores/movie";
 export default {
+    data() {
+        return {
+            movieStore: useMovieStore()
+        }
+    },
     props: {
         movie: {
             type:Object,
@@ -25,7 +31,7 @@ export default {
     methods:{
         onLike() {
             this.$emit('onLike', this.list.id)
-        },
+        }
     },
 }
 </script>

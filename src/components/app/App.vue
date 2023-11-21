@@ -1,20 +1,21 @@
 <template>
     <div class="app">
         <div class="content">
-            <ListInfo :allMoviesCount="movies.length"/>
+            <ListInfo :allMoviesCount="movieStore.movies.length"/>
             <div class="search-panel">
                 <SearchPanel :updateTernHandler="updateTernHandler"/>
                 <ListFilter :updateFilterHandler="updateFilterHandler" :filterName="filter" />
-                <ListAdd @createMovie="createMovie"/>
+                <!--<ListAdd @createMovie="createMovie"/>-->
+                <DialogsWrapper />
             </div>
             <List
-                v-bind:movies="onFilterHandler(onSearchHandler(movies, term), filter)"
+                v-bind:movies="onFilterHandler(onSearchHandler(movieStore.movies, term), filter)"
                 @onToggle="onToggleHandler"
                 @onRemove='onRemoveHandler'/>
-            <OpenMap :movies="movies"/>
-            <Coordinate v-bind:lists="movies"/>
+            <OpenMap :movies="movieStore.movies"/>
         </div>
     </div>
+
 </template>
 
 
@@ -26,6 +27,7 @@ import List from "@/components/lists/List.vue";
 import ListAdd from "@/components/list-add/ListAdd.vue";
 import OpenMap from "@/components/map/OpenMap.vue";
 import Coordinate from "@/ui-components/Coordinate.vue";
+import {useMovieStore} from "@/stores/movie";
 
 export default{
     components:{
@@ -39,37 +41,12 @@ export default{
     },
     data() {
         return {
-            movies:[
-                {
-                    name:'Toshkent',
-                    latitude:69.254631,
-                    longitude:41.316011,
-                    type:1,
-                    id:1,
-                },
-                {
-                    name:'Chirchiq',
-                    latitude:69.591520,
-                    longitude:41.492798,
-                    type:1,
-                    id:2,
-                },
-                {
-                    name:'Samarqand',
-                    latitude:66.947957,
-                    longitude:39.668590,
-                    type:2,
-                    id:3,
-                },
-            ],
+            movieStore: useMovieStore(),
             term: '',
             filter: 'all',
         }
     },
     methods: {
-        createMovie(item){
-            this.movies.push(item)
-        },
         onToggleHandler({id, prop}){
             this.movies = this.movies.map(item =>{
                 if(item.id == id){

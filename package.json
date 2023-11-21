@@ -13,7 +13,9 @@
     "ol-ext": "^4.0.11",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
-    "vue3-openlayers": "^3.1.0"
+    "vue-router": "^4.2.5",
+    "vue3-openlayers": "^3.1.0",
+    "vuejs-confirm-dialog": "^0.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
